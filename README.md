@@ -15,6 +15,10 @@ Neo4j is highly valuable in data science for analyzing and modeling complex rela
 
 ##  Practical project using Neo4j
 
+In this project, the goal is to create and manage a graph that represents various entities and their relationships. This involves adding nodes with relevant labels to represent different categories of data and establishing connections between these entities to reflect their interactions. The graph will provide a visual representation of these relationships, offering insights into the structure and connections within the data.
+
+Furthermore, the project includes updating the graph with new data entries and making adjustments to reflect new interactions as they occur. This process demonstrates the ability to maintain and expand the graph over time, ensuring that the model remains accurate and up-to-date as new entities and relationships are incorporated into the system.
+
 ![](https://github.com/julioalexp/Neo4j/blob/main/1.png)
 ![](https://github.com/julioalexp/Neo4j/blob/main/2.png)
 ![](https://github.com/julioalexp/Neo4j/blob/main/3.png)
@@ -25,7 +29,6 @@ Neo4j is highly valuable in data science for analyzing and modeling complex rela
 ![](https://github.com/julioalexp/Neo4j/blob/main/8.png)
 ![](https://github.com/julioalexp/Neo4j/blob/main/9.png)
 
-![](https://github.com/julioalexp/Neo4j/blob/main/Practice-Neo4j//txt)
 
 
 
