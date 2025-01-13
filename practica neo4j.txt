@@ -1,0 +1,58 @@
+// Creacion nodos de usuarios de instagram
+CREATE (:Instagram_usuario {nombre: 'Julio Pasimo', username: 'juliop', correo: 'juliop@gmail.com', edad: 25, ciudad: 'Santo domingo', pais: 'Republica Dominicana', seguidores: 156, seguidos: 4845})
+CREATE (:Instagram_usuario {nombre: 'Alex Montilla', username: 'alexm', correo: 'alex@gyahoo.com', edad: 34, ciudad: 'Bonao', pais: 'Republica Dominicana, seguidores: 15, seguidos: 45})
+CREATE (:Instagram_usuario {nombre: 'Juan Perdomo', username: 'juanp', correo: 'juanp@gmail.com', edad: 28, ciudad: 'Santo Domingo', pais: 'Republica Dominicana', seguidores: 158, seguidos: 425})
+CREATE (:Instagram_usuario {nombre: 'María Rodriguez', username: 'mariarod', correo: 'mariarod@example.com', edad: 35, ciudad: 'Santiago', pais: 'Republica Dominicana'seguidores: 255, seguidos: 145})
+CREATE (:Instagram_usuario {nombre: 'Pedro Gomez', username: 'pedrog', correo: 'pedrogomez@yahoo.com', edad: 22, ciudad: 'La Romana', pais: 'Republica Dominicana', seguidores: 34, seguidos: 987})
+CREATE (:Instagram_usuario {nombre: 'Laura Castillo', username: 'laurac', correo: 'lauracastillo@gmail.com', edad: 31, ciudad: 'Puerto Plata', pais: 'Republica Dominicana'seguidores: 1485, seguidos: 945})
+CREATE (:Instagram_usuario {nombre: 'Carlos Hernandez', username: 'carlosh', correo: 'carlosh@example.com', edad: 26, ciudad: 'Punta Cana', pais: 'Republica Dominicana'seguidores: 1155, seguidos: 435})
+CREATE (:Instagram_usuario {nombre: 'Ana Medina', username: 'anam', correo: 'anamedina@gmail.com', edad: 29, ciudad: 'San Cristobal', pais: 'Republica Dominicana'seguidores: 215, seguidos: 126})
+CREATE (:Instagram_usuario {nombre: 'Luis Martínez', username: 'luism', correo: 'luismartinez@example.com', edad: 24, ciudad: 'La Vega', pais: 'Republica Dominicana'seguidores: 1884, seguidos: 415})
+CREATE (:Instagram_usuario {nombre: 'Elena Diaz', username: 'elenad', correo: 'elenadiaz@yahoo.com', edad: 32, ciudad: 'Higuey', pais: 'Republica Dominicana'seguidores: 148, seguidos: 545})
+CREATE (:Instagram_usuario {nombre: 'David Ortiz', username: 'davidortiz', correo: 'davidortiz@example.com', edad: 45, ciudad: 'Santo Domingo', pais: 'Republica Dominicana', seguidores: 159851614, seguidos: 231})
+
+
+// Establecer relaciones "SIGUE_A" entre usuarios de Instagram
+MATCH (u1:Instagram_usuario {username: 'juliop'}), (u2:Instagram_usuario {username: 'alexm'})
+CREATE (u1)-[:SIGUE_A]->(u2)
+WITH u1, u2
+MATCH (u3:Instagram_usuario {username: 'juanp'}), (u4:Instagram_usuario {username: 'mariarod'})
+CREATE (u3)-[:SIGUE_A]->(u4)
+WITH u1, u2, u3, u4
+MATCH (u5:Instagram_usuario {username: 'pedrog'}), (u6:Instagram_usuario {username: 'laurac'})
+CREATE (u5)-[:SIGUE_A]->(u6)
+WITH u1, u2, u3, u4, u5, u6
+MATCH (u7:Instagram_usuario {username: 'carlosh'}), (u8:Instagram_usuario {username: 'anam'})
+CREATE (u7)-[:SIGUE_A]->(u8)
+WITH u1, u2, u3, u4, u5, u6, u7, u8
+MATCH (u9:Instagram_usuario {username: 'luism'}), (u10:Instagram_usuario {username: 'elenad'})
+CREATE (u9)-[:SIGUE_A]->(u10)
+
+// se crea un usuario famoso como David Ortiz el cual 7 usuarios le siguen a el pero el no sigue a ninguno
+// Establecer la relación "SIGUE_A" desde el usuario 'juliop' hacia David Ortiz
+MATCH (famoso:Instagram_usuario {username: 'davidortiz'})
+MATCH (u1:Instagram_usuario {username: 'juliop'})
+CREATE (u1)-[:SIGUE_A]->(famoso);
+
+\\ mas seguidores
+MATCH (famoso:Instagram_usuario {username: 'davidortiz'})
+
+MATCH (u6:Instagram_usuario {username: 'laurac'})
+CREATE (u6)-[:SIGUE_A]->(famoso) 
+WITH famoso, u6
+
+MATCH (u7:Instagram_usuario {username: 'carlosh'})
+CREATE (u7)-[:SIGUE_A]->(famoso) 
+WITH famoso, u7
+
+MATCH (u8:Instagram_usuario {username: 'anam'})
+CREATE (u8)-[:SIGUE_A]->(famoso);
+
+// Establecer relación mutua "SIGUE_A" entre Luism y Laurac
+MATCH (luism:Instagram_usuario {username: 'luism'})
+MATCH (laurac:Instagram_usuario {username: 'laurac'})
+
+CREATE (luism)-[:SIGUE_A]->(laurac)
+CREATE (laurac)-[:SIGUE_A]->(luism);
+
+
