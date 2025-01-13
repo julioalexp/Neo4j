@@ -1,5 +1,5 @@
 # Neo4j
-A intro to Neo4J
+An intro to Neo4J
 
 ![](https://github.com/julioalexp/Neo4j/blob/main/descarga.png)
 
